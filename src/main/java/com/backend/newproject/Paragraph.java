@@ -4,11 +4,13 @@ public class Paragraph implements Element{
     private String textParagraph;
     private AlignStrategy align;
     private Context context;
+    private static Logger log = Logger.getInstance();
 
     public Paragraph(String par, AlignStrategy align, Context context){
         this.textParagraph=par;
         this.align = align;
         this.context = context;
+        log.info("Paragraph: " + par);
     }
 
     public String getTextParagraph(){
