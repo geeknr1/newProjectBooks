@@ -1,10 +1,19 @@
 package com.backend.newproject;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 
+@Entity
 public class TableOfContents implements Element{
 
+    @OneToMany(mappedBy = "book", targetEntity = Book.class, cascade = CascadeType.ALL)
     private ArrayList<Section> sections;
+    @Id
+    private Long id;
 
     public TableOfContents(){}
 
@@ -29,4 +38,11 @@ public class TableOfContents implements Element{
             s.print();
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

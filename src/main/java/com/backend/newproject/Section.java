@@ -1,14 +1,25 @@
 package com.backend.newproject;
 
-import java.util.ArrayList;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Section implements Element{
     private String sectionName;
-    private ArrayList<Element> elements;
+    @OneToMany(mappedBy = "book", targetEntity = Book.class, cascade = CascadeType.ALL)
+    private List<Element> elements;
+    @Id
+    private Long id;
 
     public Section(String section){
         this.sectionName=section;
         elements=new ArrayList<>();
+    }
+
+    public Section() {
+
     }
 
     public String getSectionName(){
@@ -40,5 +51,13 @@ public class Section implements Element{
         for(Element e: elements){
             e.print();
         }
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
