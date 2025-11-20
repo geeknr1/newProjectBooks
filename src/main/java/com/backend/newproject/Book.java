@@ -61,4 +61,12 @@ public class Book{
     public Long getId() {
         return id;
     }
+
+    public Object getIsbn() {
+        return null;
+    }
+
+    public String getAuthor() {
+        return null;
+    }
 }
